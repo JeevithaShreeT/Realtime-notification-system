@@ -1,0 +1,32 @@
+# Start all containers
+docker-compose up -d
+
+# Stop all containers and removes
+docker-compose down
+
+#stop all container
+docker-compose stop
+
+# Check running containers
+docker ps
+
+# Create a Kafka topic
+docker exec -it kafka kafka-topics --create --topic TOPIC_NAME --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+# List all Kafka topics
+docker exec -it kafka kafka-topics --list --bootstrap-server localhost:9092
+
+# Send test message to topic
+docker exec -it kafka kafka-console-producer --topic TOPIC_NAME --bootstrap-server localhost:9092
+
+# Read messages from topic
+docker exec -it kafka kafka-console-consumer --topic TOPIC_NAME --bootstrap-server localhost:9092 --from-beginning
+
+# See Kafka logs
+docker logs kafka
+
+# See Zookeeper logs
+docker logs zookeeper
+
+# One command to check everything is healthy
+docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

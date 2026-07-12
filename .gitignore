@@ -1,0 +1,14 @@
+# Maven
+target/
+*.jar
+
+# IntelliJ
+.idea/
+*.iml
+
+# Secret files
+**/application.properties
+
+# OS
+.DS_Store
+Thumbs.db
